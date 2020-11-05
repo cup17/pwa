@@ -57,10 +57,16 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_account);
-        phone = findViewById(R.id.profilePhone);
-        fullName = findViewById(R.id.profileName);
-        email = findViewById(R.id.profileEmail);
+        setContentView(R.layout.fragment_account); // <-- lu gabisa daftarin Fragment di activity,
+        //setContentView(R.layout.activity_main); // <-- harusnya diganti gini, tapi bakal error karena kode di file MainActivity.java ini banyak ngambil reference dari fragment_account.xml
+
+        phone = findViewById(R.id.profilePhone); // <-- ini adanya di fragment_account.xml bukan activity_main.xml
+        // -jadi pas lu ganti setcontentview diatas itu ke setContentView(R.layout.activity_main) bakal error
+        fullName = findViewById(R.id.profileName); // <-- ini adanya di fragment_account.xml bukan activity_main.xml -harusnya kode ini ada di AccountFragment.java
+        email = findViewById(R.id.profileEmail); // <-- ini adanya di fragment_account.xml bukan activity_main.xml -harusnya kode ini ada di AccountFragment.java
+
+        //Dan seterusnya ini harusnya ada di AccountFragment.java
+        //Kalau udah dipindah kode-kode disini ke AccountFragment.java, file ini (MainActivity.java) jadi gaberguna karena udah ada Activity_main.java yang gantiin ini yanga ada BNnya.
         resetPassLocal = findViewById(R.id.resetPasswordLocal);
 
         profileImage = findViewById(R.id.profileImage);

@@ -54,7 +54,8 @@ public class Register extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            //startActivity(new Intent(getApplicationContext(),MainActivity.class)); // <-- ini code lu salah harusnya ke Activity_Main, karena kodingan buat set bottom Navnya ada di Activity_Main
+            startActivity(new Intent(getApplicationContext(),Activity_Main.class));  // yang bener ini
             finish();
         }
 

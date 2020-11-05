@@ -75,7 +75,8 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),AcountFragment.class));
+                            //startActivity(new Intent(getApplicationContext(),AcountFragment.class)); // <-- ini juga salah karena intent itu cuma bisa ke activity gabisa ke Fragment
+                            startActivity(new Intent(getApplicationContext(),Activity_Main.class)); // <-- ini yang bener
                         }else {
                             Toast.makeText(Login.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);

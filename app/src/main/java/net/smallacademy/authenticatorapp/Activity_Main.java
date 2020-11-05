@@ -27,8 +27,9 @@ public class Activity_Main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        bottomView = findViewById(R.id.bn_main);
+        setContentView(R.layout.activity_main); // <-- di Activity_main.java ini lu reference activity_main.xml yang dimana itu posisi BN berada, makannya intentnya gue rubah kesini.
+        bottomView = findViewById(R.id.bn_main); // <-- ini button Nav nya
+        //intinya lu BN lu ilang karena salah intent/salah pindah layout
         sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
