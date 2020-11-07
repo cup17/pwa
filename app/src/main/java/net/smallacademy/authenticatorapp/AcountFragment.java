@@ -118,9 +118,9 @@ public class AcountFragment extends Fragment  {
 
 
         DocumentReference documentReference = fStore.collection("users").document(userId);
-        documentReference.addSnapshotListener((Executor) this, new EventListener<DocumentSnapshot>() {
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+            public void onEvent(@androidx.annotation.Nullable DocumentSnapshot documentSnapshot, @androidx.annotation.Nullable FirebaseFirestoreException error) {
                 if (documentSnapshot.exists()) {
                     phone.setText(documentSnapshot.getString("phone"));
                     fullName.setText(documentSnapshot.getString("fName"));
@@ -130,6 +130,18 @@ public class AcountFragment extends Fragment  {
                 }
             }
         });
+//        documentReference.addSnapshotListener((Executor) this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                if (documentSnapshot.exists()) {
+//                    phone.setText(documentSnapshot.getString("phone"));
+//                    fullName.setText(documentSnapshot.getString("fName"));
+//                    email.setText(documentSnapshot.getString("email"));
+//                } else {
+//                    Log.d("tag", "onEvent: Document do not exists");
+//                }
+//            }
+//        });
 
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
